@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venta de Celulares</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+     <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    
+    .navbar {
+        background-color: #343a40;
+      border-bottom: 3px solid #343a40;
+    }
+    
+    .navbar-brand {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+    
+    .navbar-toggler-icon {
+      background-color: #fff;
+    }
+    .navbar-nav .nav-link:hover {
+        color: #ffc107;
+      }
+    
+    /* Agrega más estilos según tus necesidades */
+    
+    /* Estilos para las tarjetas de producto */
+
+    .col-md-8 h1 {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    
+    .card-text {
+      font-size: 16px;
+    }
+    
+    .agregar-carrito {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        transition: background-color 0.3s;
+    }
+
+    .agregar-carrito:hover {
+        background-color: #0056b3;
+      }
+    
+    /* Estilos para el formulario de filtros */
+    #filterForm {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      #precio {
+        width: 100%;
+      }
+      
+      #precioValue {
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #555;
+      }
+    
+    /* Estilos para la sección de inicio */
+    .inicio-section {
+        background-image: url('imagenes/banner-cel.jpg'); /* Ruta de la imagen de fondo */
+        background-size: cover;
+        background-position: center;
+        padding: 200px 0;
+        text-align: center;
+        color: #fff;
+      }
+  
+      .inicio-heading {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+  
+      .inicio-subheading {
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+  
+      .btn-inicio {
+        background-color: #ffc107;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+  
+      .btn-inicio:hover {
+        background-color: #ffca2d;
+      }
+
+      .card-img-top {
+        max-height: 200px; /* Puedes ajustar esta altura según tus necesidades */
+        object-fit: contain; /* Ajusta la forma en que la imagen se adapta al contenedor */
+      }
+      #celularesEnVenta {
+        margin-top: 50px; /* Ajusta este valor para agregar más o menos espacio según tus necesidades */
+      }
+      /* Estilos para el carrusel */
+      #inicioCarousel {
+        max-width: 1200px; /* Establece el ancho máximo del carrusel según tus preferencias */
+        margin: 0 auto; /* Centra el carrusel en el contenedor */
+      }
+
+      /* Estilos para las imágenes dentro del carrusel */
+      #inicioCarousel .carousel-inner .carousel-item img {
+        max-height: 500px; /* Ajusta la altura máxima de las imágenes */
+        margin: 0 auto; /* Centra las imágenes horizontalmente */
+      }
+
+      /* Estilos para el texto dentro del carrusel */
+      #inicioCarousel .carousel-inner .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para el texto */
+        color: #fff; /* Color del texto */
+        padding: 10px; /* Espaciado interior del texto */
+        text-align: center; /* Centra el texto horizontalmente */
+      }
+
+      /* Estilos para los controles del carrusel */
+      #inicioCarousel .carousel-control-prev, #inicioCarousel .carousel-control-next {
+        color: #000; /* Color de los botones de control */
+        font-size: 24px; /* Tamaño de fuente de los botones de control */
+        background-color: rgba(255, 255, 255, 0.5); /* Fondo semitransparente de los botones de control */
+        border-radius: 5px; /* Borde redondeado de los botones de control */
+        border: 1px solid #ccc; /* Borde de 1 píxel y color gris claro */
+      }
+
+      #inicioCarousel .carousel-control-prev:hover, #inicioCarousel .carousel-control-next:hover {
+        background-color: rgba(255, 255, 255, 0.8); /* Cambio de color al pasar el mouse por encima */
+      }
+      /* Estilos para la sección del carrusel */
+      .carrusel-section {
+        background-color: #add8e6; /* Color de fondo azul claro (puedes cambiarlo a tu preferencia) */
+        padding: 20px; /* Espaciado interior para separar el contenido del carrusel del borde */
+      }
+
+  </style>
+
+</head>
+<body>
+  <link rel="shortcut icon" href="imagenes/smartphone.png" />
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- Navbar content, as shown in the previous response -->
+    <a class="navbar-brand" href="./index.html">
+        <img src="imagenes/logo.jpeg" width="30" height="30" class="d-inline-block align-top" alt="Logo" >
+        Big Tech
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./celulares.html">Comprar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contacto.html">Contactanos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./legal.html">Aviso Legal</a>
+          </li>
+          <!-- Puedes agregar más elementos del menú aquí -->
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <!-- <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button> -->
+          <button class="btn btn-outline-light my-2 my-sm-0 ml-2" type="button" id="carritoBtn">
+            <i class="fas fa-shopping-cart"></i> Carrito <span id="carritoCantidad">0</span>
+          </button>
+        </form>
+      </div>
+  </nav>
+
+  <div class="modal fade" id="carritoModal" tabindex="-1" role="dialog" aria-labelledby="carritoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="carritoModalBody">
+          <!-- Contenido del carrito se agregará aquí -->
+        </div>
+        <div class="modal-footer">
+          <div>Total: <span id="totalCarrito">$0.00</span></div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="inicioCarousel" class="carousel slide carrusel-section" data-ride="carousel">
+    <!-- Indicadores del carrusel -->
+    <ol class="carousel-indicators">
+      <li data-target="#inicioCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#inicioCarousel" data-slide-to="1"></li>
+      <li data-target="#inicioCarousel" data-slide-to="2"></li>
+      <!-- Agrega más indicadores según la cantidad de celulares más vendidos -->
+    </ol>
+  
+    <!-- Imágenes de los celulares más vendidos -->
+    <div class="carousel-inner">
+      <!-- Primer celular más vendido -->
+      <div class="carousel-item active">
+        <img src="imagenes/samsung-galaxy-f54.jpg" class="d-block w-100" alt="Celular 1">
+        <div class="carousel-caption">
+          <h3>Celular 1</h3>
+          <p>Descripción del celular 1.</p>
+        </div>
+      </div>
+  
+      <!-- Segundo celular más vendido -->
+      <div class="carousel-item">
+        <img src="imagenes/apple-iphone-14-pro.jpg" class="d-block w-100" alt="Celular 2">
+        <div class="carousel-caption">
+          <h3>Celular 2</h3>
+          <p>Descripción del celular 2.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="imagenes/samsung-galaxy-s22-wallpaper.jpg" class="d-block w-100" alt="Celular 2">
+        <div class="carousel-caption">
+          <h3>Celular 2</h3>
+          <p>Descripción del celular 2.</p>
+        </div>
+      </div>
+  
+      <!-- Agrega más elementos para mostrar otros celulares más vendidos -->
+    </div>
+  </section>
+  
+  
+  <div class="container" id="celularesEnVenta">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Celulares en Venta</h1>
+        <div class="row" id="celularesContainer">
+          <!-- Celulares en venta se mostrarán aquí usando JavaScript -->
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h2>Filtrar Celulares</h2>
+        <form id="filterForm">
+          <div class="form-group">
+            <label for="marca">Marca:</label>
+            <select class="form-control" id="marca">
+              <option value="">Todas</option>
+              <option value="Samsung">Samsung</option>
+              <option value="Sony">Sony</option>
+              <option value="Xiaomi">Xiaomi</option>
+              <option value="Apple">Apple</option>
+              <!-- Agregar más opciones de marcas aquí -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input type="range" class="form-control-range" id="precio" min="0" max="2000">
+            <span id="precioValue">Precio: $0</span>
+          </div>
+          <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h3>Síguenos en redes sociales</h3>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="#" target="_blank" class="text-white">
+                <i class="fab fa-facebook-square fa-2x"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" target="_blank" class="text-white">
+                <i class="fab fa-twitter-square fa-2x"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" target="_blank" class="text-white">
+                <i class="fab fa-instagram-square fa-2x"></i>
+              </a>
+            </li>
+            <!-- Puedes agregar más íconos de redes sociales según sea necesario -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+
+    let carritoCantidad = 0;
+    let carrito = [];
+
+    // Datos de ejemplo de celulares en venta
+    const celulares = [
+      { marca: "Samsung", modelo: "Galaxy f54", precio: 400, imagen: "imagenes/samsung-galaxy-f54.jpg" },
+      { marca: "Sony", modelo: "Xperia 1v", precio: 1140, imagen: "imagenes/sony-xperia-1-v-0.jpg" },
+      { marca: "Xiaomi", modelo: "Redmi 12", precio: 144, imagen: "imagenes/xiaomi-redmi-12.jpg" },
+      { marca: "Sony", modelo: "Xperia 1", precio: 1000, imagen: "imagenes/sony-xperia-1.jpg" },
+      { marca: "Apple", modelo: "iphone 14 pro", precio: 1200, imagen: "imagenes/apple-iphone-14-pro.jpg" },
+      { marca: "Samsung", modelo: "Galaxy s22 ultra", precio: 800, imagen: "imagenes/samsung-galaxy-s22-ultr.jpg" },
+      // Agregar más datos de celulares aquí
+    ];
+
+    // Función para mostrar celulares en la página
+    function mostrarCelulares(celulares) {
+      const celularesContainer = document.getElementById("celularesContainer");
+      celularesContainer.innerHTML = "";
+      
+      celulares.forEach(celular => {
+        const card = document.createElement("div");
+        card.classList.add("col-md-4", "mb-4");
+        card.innerHTML = `
+          <div class="card">
+            <img src="${celular.imagen}" class="card-img-top" alt="${celular.marca} ${celular.modelo}">
+            <div class="card-body">
+              <h5 class="card-title">${celular.marca}</h5>
+              <p class="card-text">Modelo: ${celular.modelo}</p>
+              <p class="card-text">Precio: $${celular.precio}</p>
+              <button class="btn btn-primary agregar-carrito" data-marca="${celular.marca}" data-modelo="${celular.modelo}" data-precio="${celular.precio}">
+                Agregar al carrito
+              </button>
+            </div>
+          </div>
+        `;
+        const agregarCarritoBtn = card.querySelector(".agregar-carrito");
+        agregarCarritoBtn.addEventListener("click", () => {
+          const marca = agregarCarritoBtn.getAttribute("data-marca");
+          const modelo = agregarCarritoBtn.getAttribute("data-modelo");
+          const precio = parseFloat(agregarCarritoBtn.getAttribute("data-precio"));
+        
+          // Agregar el producto al carrito
+          carrito.push({ marca, modelo, precio });
+        
+          // Actualizar la cantidad en el carrito
+          carritoCantidad++;
+          document.getElementById("carritoCantidad").textContent = carritoCantidad;
+        });
+        celularesContainer.appendChild(card);
+      });
+    }
+
+    const carritoBtn = document.getElementById("carritoBtn");
+    carritoBtn.addEventListener("click", function () {
+      // Mostrar los productos en el carrito en un modal
+      mostrarProductosEnCarrito();
+    });
+    
+
+    // Event listener para el formulario de filtros
+    const filterForm = document.getElementById("filterForm");
+    filterForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const selectedMarca = document.getElementById("marca").value;
+      const selectedPrecio = document.getElementById("precio").value;
+
+      const filteredCelulares = celulares.filter(celular => {
+        const marcaMatch = selectedMarca === "" || celular.marca === selectedMarca;
+        const precioMatch = celular.precio <= selectedPrecio;
+        return marcaMatch && precioMatch;
+      });
+
+      mostrarCelulares(filteredCelulares);
+    });
+
+    // Actualizar valor del precio en tiempo real
+    const precioInput = document.getElementById("precio");
+    const precioValue = document.getElementById("precioValue");
+    precioInput.addEventListener("input", function () {
+      precioValue.textContent = `Precio: $${precioInput.value}`;
+    });
+
+    // Mostrar todos los celulares al cargar la página
+    mostrarCelulares(celulares);
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+  
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+  
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth' // Hace que el desplazamiento sea suave
+          });
+        }
+      });
+    });
+
+    //mostrar contenido del carrito
+    function mostrarProductosEnCarrito() {
+      const modalBody = document.getElementById("carritoModalBody");
+      modalBody.innerHTML = "";
+    
+      if (carrito.length === 0) {
+        modalBody.innerHTML = "<p>El carrito está vacío.</p>";
+      } else {
+        const tabla = document.createElement("table");
+        tabla.classList.add("table");
+        tabla.innerHTML = `
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        `;
+    
+        const tablaCuerpo = tabla.querySelector("tbody");
+        let totalCarrito = 0; // Variable para calcular el total
+    
+        carrito.forEach((producto, index) => {
+          const fila = document.createElement("tr");
+          fila.innerHTML = `
+            <td>${producto.marca} - ${producto.modelo}</td>
+            <td>$${producto.precio}</td>
+            <td>
+              <button class="btn btn-danger btn-sm retirar-producto" data-index="${index}">Retirar</button>
+            </td>
+          `;
+          tablaCuerpo.appendChild(fila);
+    
+          // Sumar el precio al total
+          totalCarrito += producto.precio;
+        });
+    
+        modalBody.appendChild(tabla);
+    
+        // Actualizar el total en el modal
+        const totalCarritoElement = document.getElementById("totalCarrito");
+        totalCarritoElement.textContent = `$${totalCarrito.toFixed(2)}`;
+      }
+    
+      // Abre el modal
+      $("#carritoModal").modal("show");
+    
+      // Agrega eventos click a los botones "Retirar"
+      const botonesRetirar = document.querySelectorAll(".retirar-producto");
+      botonesRetirar.forEach((boton, index) => {
+        boton.addEventListener("click", () => {
+          retirarProducto(index);
+        });
+      });
+    }
+    
+    
+
+    function retirarProducto(index) {
+      if (index >= 0 && index < carrito.length) {
+        carrito.splice(index, 1); // Elimina el producto del carrito
+        carritoCantidad--;
+        document.getElementById("carritoCantidad").textContent = carritoCantidad;
+        mostrarProductosEnCarrito(); // Vuelve a mostrar el modal actualizado
+      }
+    }
+
+    //iniciar el carrusel
+    $(document).ready(function(){
+      $('#inicioCarousel').carousel();
+    });
+    
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big Tech</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+     <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    
+    .navbar {
+        background-color: #343a40;
+      border-bottom: 3px solid #343a40;
+      
+    }
+    
+    .navbar-brand {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+    
+    .navbar-toggler-icon {
+      background-color: #fff;
+    }
+    .navbar-nav .nav-link:hover {
+        color: #ffc107;
+      }
+    .productos-destacados-container {
+        margin-top: 100px; /* Ajusta el valor según sea necesario para evitar que se solape con el navbar */
+    }
+      
+
+  </style>
+
+</head>
+<body>
+  <link rel="shortcut icon" href="imagenes/smartphone.png" />
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- Navbar content, as shown in the previous response -->
+    <a class="navbar-brand" href="./index.html">
+        <img src="imagenes/logo.jpeg" width="30" height="30" class="d-inline-block align-top" alt="Logo" >
+        Big Tech
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./celulares.html">Comprar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contacto.html">Contactanos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./legal.html">Aviso Legal</a>
+          </li>
+          <!-- Puedes agregar más elementos del menú aquí -->
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <!-- <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button> -->
+          <button class="btn btn-outline-light my-2 my-sm-0 ml-2" type="button" id="carritoBtn">
+            <i class="fas fa-shopping-cart"></i> Carrito <span id="carritoCantidad">0</span>
+          </button>
+        </form>
+      </div>
+  </nav>
+
+  
+  <div class="mt-5 pt-4">
+  <div id="productosContainer" class="mt-5">
+        <div class="container">
+            <h2>Productos Destacados</h2>
+            <div class="row" id="productosDestacados">
+                <!-- Aquí se mostrarán los productos destacados -->
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h3>Síguenos en redes sociales</h3>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="#" target="_blank" class="text-white">
+                <i class="fab fa-facebook-square fa-2x"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" target="_blank" class="text-white">
+                <i class="fab fa-twitter-square fa-2x"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" target="_blank" class="text-white">
+                <i class="fab fa-instagram-square fa-2x"></i>
+              </a>
+            </li>
+            <!-- Puedes agregar más íconos de redes sociales según sea necesario -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="carritoModal" tabindex="-1" role="dialog" aria-labelledby="carritoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="carritoModalBody">
+          <!-- Contenido del carrito se agregará aquí -->
+        </div>
+        <div class="modal-footer">
+          <div>Total: <span id="totalCarrito">$0.00</span></div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+
+    let carritoCantidad = 0;
+    let carrito = [];
+
+    const productosDestacados = [
+  {
+    marca: "Samsung",
+    modelo: "Galaxy S21",
+    precio: 799.99,
+    imagen: "imagenes/s21.jpg"
+  },
+  {
+    marca: "Apple",
+    modelo: "iPhone 13",
+    precio: 999.99,
+    imagen: "imagenes/iphone13.jpg"
+  },
+  // Agrega más productos destacados según sea necesario
+];
+function mostrarProductosDestacados() {
+  const productosDestacadosContainer = document.getElementById("productosDestacados");
+
+  productosDestacados.forEach(producto => {
+    const productoHTML = `
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="${producto.imagen}" class="card-img-top" alt="${producto.marca} ${producto.modelo}">
+          <div class="card-body">
+            <h5 class="card-title">${producto.marca} ${producto.modelo}</h5>
+            <p class="card-text">$${producto.precio.toFixed(2)}</p>
+            <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          </div>
+        </div>
+      </div>
+    `;
+
+    productosDestacadosContainer.innerHTML += productoHTML;
+  });
+}
+
+// Llama a la función para mostrar los productos destacados al cargar la página
+mostrarProductosDestacados();
+
+    const carritoBtn = document.getElementById("carritoBtn");
+    carritoBtn.addEventListener("click", function () {
+      // Mostrar los productos en el carrito en un modal
+      mostrarProductosEnCarrito();
+    });
+
+    //mostrar contenido del carrito
+    function mostrarProductosEnCarrito() {
+      const modalBody = document.getElementById("carritoModalBody");
+      modalBody.innerHTML = "";
+    
+      if (carrito.length === 0) {
+        modalBody.innerHTML = "<p>El carrito está vacío.</p>";
+      } else {
+        const tabla = document.createElement("table");
+        tabla.classList.add("table");
+        tabla.innerHTML = `
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        `;
+    
+        const tablaCuerpo = tabla.querySelector("tbody");
+        let totalCarrito = 0; // Variable para calcular el total
+    
+        carrito.forEach((producto, index) => {
+          const fila = document.createElement("tr");
+          fila.innerHTML = `
+            <td>${producto.marca} - ${producto.modelo}</td>
+            <td>$${producto.precio}</td>
+            <td>
+              <button class="btn btn-danger btn-sm retirar-producto" data-index="${index}">Retirar</button>
+            </td>
+          `;
+          tablaCuerpo.appendChild(fila);
+    
+          // Sumar el precio al total
+          totalCarrito += producto.precio;
+        });
+    
+        modalBody.appendChild(tabla);
+    
+        // Actualizar el total en el modal
+        const totalCarritoElement = document.getElementById("totalCarrito");
+        totalCarritoElement.textContent = `$${totalCarrito.toFixed(2)}`;
+      }
+    
+      // Abre el modal
+      $("#carritoModal").modal("show");
+    
+      // Agrega eventos click a los botones "Retirar"
+      const botonesRetirar = document.querySelectorAll(".retirar-producto");
+      botonesRetirar.forEach((boton, index) => {
+        boton.addEventListener("click", () => {
+          retirarProducto(index);
+        });
+      });
+    }
+    
+    
+
+    function retirarProducto(index) {
+      if (index >= 0 && index < carrito.length) {
+        carrito.splice(index, 1); // Elimina el producto del carrito
+        carritoCantidad--;
+        document.getElementById("carritoCantidad").textContent = carritoCantidad;
+        mostrarProductosEnCarrito(); // Vuelve a mostrar el modal actualizado
+      }
+    }
+    
+  </script>
+</body>
+</html>
