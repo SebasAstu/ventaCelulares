@@ -45,6 +45,13 @@
         width: auto;
         margin: 0 auto; /* Centra horizontalmente las imágenes 
     }*/
+    /* Estilo para las imágenes de los clientes */
+.cliente-imagen {
+  width: 60px; /* Ajusta el ancho deseado */
+  height: 60px; /* Ajusta la altura deseada */
+  border-radius: 50%; /* Opcional: para redondear las imágenes */
+}
+
 
   </style>
 
@@ -91,17 +98,64 @@
           </li>
           <!-- Puedes agregar más elementos del menú aquí -->
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <!-- <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button> -->
+        <!--<form class="form-inline my-2 my-lg-0">
+           <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button> 
           <button class="btn btn-outline-light my-2 my-sm-0 ml-2" type="button" id="carritoBtn">
             <i class="fas fa-shopping-cart"></i> Carrito <span id="carritoCantidad">0</span>
           </button>
-        </form>
+        </form>-->
       </div>
   </nav>
 
- 
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Clientes Satisfechos</h2>
+          <p>Aquí están algunas opiniones de nuestros clientes satisfechos.</p>
+          
+          <!-- Comentario de un cliente -->
+          <div class="media mb-4">
+            <img src="imagenes/avatar.png" class="mr-3 cliente-imagen" alt="Cliente 1">
+            <div class="media-body">
+              <h5 class="mt-0">Juan Pérez</h5>
+              <p>¡Me encanta Big Tech! Siempre encuentro los últimos gadgets a los mejores precios. La navegación en el sitio web es súper fácil, y el proceso de compra es rápido y seguro.</p>
+            </div>
+          </div>
+          
+          <div class="media mb-4">
+            <img src="imagenes/avatar.png" class="mr-3 cliente-imagen" alt="Cliente 1">
+            <div class="media-body">
+              <h5 class="mt-0">Maria Lopez</h5>
+              <p>Estoy muy satisfecho con la experiencia de compra en Big Tech. La página web es fácil de navegar, los precios son competitivos y los envíos son rápidos. Recomiendo esta tienda a todos mis amigos.</p>
+            </div>
+          </div>
+
+          <div class="media mb-4">
+            <img src="imagenes/avatar.png" class="mr-3 cliente-imagen" alt="Cliente 1">
+            <div class="media-body">
+              <h5 class="mt-0">Luis Martinez</h5>
+              <p>¡Me encanta Big Tech! Siempre encuentro los últimos gadgets a los mejores precios. La navegación en el sitio web es súper fácil, y el proceso de compra es rápido y seguro.</p>
+            </div>
+          </div> 
+          <!-- Agrega más comentarios de clientes aquí si lo deseas -->
+          
+        </div>
+        <div class="col-md-6">
+          <!-- Puedes agregar una imagen relacionada con clientes satisfechos aquí -->
+          <img src="imagenes/pulgar.png" alt="Clientes Satisfechos" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  
+  
+  
+  
 
   <footer class="bg-dark text-white py-4">
     <div class="container">
