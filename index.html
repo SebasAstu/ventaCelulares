@@ -32,16 +32,42 @@
     .navbar-nav .nav-link:hover {
         color: #ffc107;
       }
-    .productos-destacados-container {
-        margin-top: 100px; /* Ajusta el valor según sea necesario para evitar que se solape con el navbar */
+
+      /* Estilo personalizado para el contenedor del carrusel 
+    .carousel-container {
+        max-height: 300px; /* Ajusta la altura como desees 
     }
-      
+
+    /* Redimensiona las imágenes para que se ajusten a la nueva altura 
+    .carousel-inner img {
+        max-height: 100%;
+        width: auto;
+        margin: 0 auto; /* Centra horizontalmente las imágenes 
+    }*/
 
   </style>
 
 </head>
 <body>
   <link rel="shortcut icon" href="imagenes/smartphone.png" />
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <!-- Diapositiva 1 con mensaje de bienvenida -->
+      <div class="carousel-item active">
+        <img src="./imagenes/wallpaperindex1.jpg" class="d-block w-100" alt="Imagen 1">
+        <div class="carousel-caption text-center" style="top: 50%; transform: translateY(-50%);">
+          <h1>Bienvenido a Big Tech</h1>
+          <p>La mejor selección de dispositivos tecnológicos.</p>
+          <a href="#" class="btn btn-primary">Ver productos</a>
+        </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  
+  
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <!-- Navbar content, as shown in the previous response -->
     <a class="navbar-brand" href="./index.html">
@@ -74,17 +100,7 @@
       </div>
   </nav>
 
-  
-  <div class="mt-5 pt-4">
-  <div id="productosContainer" class="mt-5">
-        <div class="container">
-            <h2>Productos Destacados</h2>
-            <div class="row" id="productosDestacados">
-                <!-- Aquí se mostrarán los productos destacados -->
-            </div>
-        </div>
-    </div>
-  </div>
+ 
 
   <footer class="bg-dark text-white py-4">
     <div class="container">

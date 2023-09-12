@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Encabezado de la página de pago -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Pago</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+     <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+      }
+  
+      .navbar {
+        background-color: #343a40;
+        border-bottom: 3px solid #343a40;
+      }
+  
+      .navbar-brand {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+      }
+  
+      .navbar-toggler-icon {
+        background-color: #fff;
+      }
+  
+      .navbar-nav .nav-link:hover {
+        color: #ffc107;
+      }
+  
+      .container-checkout {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+  
+      .checkout-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+  
+      .checkout-product {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+  
+      .checkout-product img {
+        max-width: 60px;
+        margin-right: 10px;
+      }
+  
+      .checkout-total {
+        font-size: 18px;
+        font-weight: bold;
+      }
+  
+      .checkout-button {
+        margin-top: 20px;
+      }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- Navbar content, as shown in the previous response -->
+    <a class="navbar-brand" href="./index.html">
+        <img src="imagenes/logo.jpeg" width="30" height="30" class="d-inline-block align-top" alt="Logo" >
+        Big Tech
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./celulares.html">Comprar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contacto.html">Contactanos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./legal.html">Aviso Legal</a>
+          </li>
+          <!-- Puedes agregar más elementos del menú aquí -->
+        </ul>
+      </div>
+  </nav>
+  <br>
+  <br>
+  <br>
+
+  <div class="container container-checkout">
+    <h1 class="checkout-title">Resumen de la Compra</h1>
+    <div id="detallesCompra">
+      <!-- Aquí se mostrarán los detalles de la compra con JavaScript -->
+    </div>
+
+    <h2 class="checkout-title">Opciones de Pago</h2>
+    <div id="opcionesPago">
+      <!-- Aquí se mostrarán las opciones de pago con JavaScript -->
+    </div>
+
+    <div class="checkout-button">
+      <button onclick="realizarPago('PayPal')" class="btn btn-primary btn-lg btn-block">Pagar con PayPal</button>
+      <button onclick="realizarPago('Tarjeta de Crédito')" class="btn btn-success btn-lg btn-block">Pagar con Tarjeta de Crédito</button>
+    </div>
+  </div>
+  <br><br><br><br>
+  <br><br><br><br>
+  <br><br><br><br>
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h3>Síguenos en redes sociales</h3>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="#" target="_blank" class="text-white">
+                <i class="fab fa-facebook-square fa-2x"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" target="_blank" class="text-white">
+                <i class="fab fa-twitter-square fa-2x"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" target="_blank" class="text-white">
+                <i class="fab fa-instagram-square fa-2x"></i>
+              </a>
+            </li>
+            <!-- Puedes agregar más íconos de redes sociales según sea necesario -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const detallesCompra = document.getElementById("detallesCompra");
+      const opcionesPago = document.getElementById("opcionesPago");
+
+      if (urlParams.has("producto1")) {
+        // Hay productos en la URL, mostrar los detalles de la compra
+        let htmlDetalles = "";
+        let total = 0;
+        urlParams.forEach((value, key) => {
+          if (key.startsWith("producto")) {
+            const precio = parseFloat(urlParams.get(`precio${key.slice(-1)}`));
+            total += precio;
+            htmlDetalles += `
+              <div class="checkout-product">
+                <div>${value}</div>
+                <div>$${precio.toFixed(2)}</div>
+              </div>
+            `;
+          }
+        });
+        detallesCompra.innerHTML = htmlDetalles;
+      
+          // Agrega las opciones de pago, aquí se simulan dos botones de pago (PayPal y tarjeta de crédito)
+          
+        } else {
+          // Carrito vacío, mostrar mensaje
+          detallesCompra.innerHTML = "<p>Carrito vacío</p>";
+        }
+      });
+      
+      // Función para simular el proceso de pago
+      function realizarPago(opcionPago) {
+        const detallesCompra = document.getElementById("detallesCompra");
+        const opcionesPago = document.getElementById("opcionesPago");
+      
+        detallesCompra.innerHTML = `<p>Procesando el pago...</p>`;
+        opcionesPago.innerHTML = "";
+      
+        // Aquí puedes agregar tu lógica de procesamiento de pago real
+        // Después de procesar el pago, muestra un mensaje de confirmación
+        setTimeout(function () {
+          detallesCompra.innerHTML = "<p>¡Compra exitosa! Gracias por tu compra.</p>";
+        }, 2000); // Cambia el tiempo (en milisegundos) según tus necesidades
+      }
+      
+      
+  </script>
+</body>
+</html>

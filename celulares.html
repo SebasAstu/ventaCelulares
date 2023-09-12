@@ -224,7 +224,7 @@
         </div>
         <div class="modal-footer">
           <div>Total: <span id="totalCarrito">$0.00</span></div>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="pagarBtn">Pagar</button>
         </div>
       </div>
     </div>
@@ -243,27 +243,27 @@
     <div class="carousel-inner">
       <!-- Primer celular más vendido -->
       <div class="carousel-item active">
-        <img src="imagenes/samsung-galaxy-f54.jpg" class="d-block w-100" alt="Celular 1">
+        <img src="imagenes/google-pixel7-pro-3 wall.jpg" class="d-block w-100" alt="Celular 1">
         <div class="carousel-caption">
-          <h3>Celular 1</h3>
-          <p>Descripción del celular 1.</p>
+          <h3>Pixel 7 pro</h3>
+          <p>Google</p>
         </div>
       </div>
   
       <!-- Segundo celular más vendido -->
       <div class="carousel-item">
-        <img src="imagenes/apple-iphone-14-pro.jpg" class="d-block w-100" alt="Celular 2">
+        <img src="imagenes/apple-iphone-14-pro-wall.jpg" class="d-block w-100" alt="Celular 2">
         <div class="carousel-caption">
-          <h3>Celular 2</h3>
-          <p>Descripción del celular 2.</p>
+          <h3>Iphone 14 pro</h3>
+          <p>Apple</p>
         </div>
       </div>
 
       <div class="carousel-item">
         <img src="imagenes/samsung-galaxy-s22-wallpaper.jpg" class="d-block w-100" alt="Celular 2">
         <div class="carousel-caption">
-          <h3>Celular 2</h3>
-          <p>Descripción del celular 2.</p>
+          <h3>Galaxy s22</h3>
+          <p>Samsung</p>
         </div>
       </div>
   
@@ -291,6 +291,8 @@
               <option value="Sony">Sony</option>
               <option value="Xiaomi">Xiaomi</option>
               <option value="Apple">Apple</option>
+              <option value="Google">Google</option>
+              <option value="Honor">Honor</option>
               <!-- Agregar más opciones de marcas aquí -->
             </select>
           </div>
@@ -304,6 +306,7 @@
       </div>
     </div>
   </div>
+
   <footer class="bg-dark text-white py-4">
     <div class="container">
       <div class="row">
@@ -331,6 +334,31 @@
       </div>
     </div>
   </footer>
+
+  <div class="modal fade" id="detalleCelularModal" tabindex="-1" role="dialog" aria-labelledby="detalleCelularModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detalleCelularModalLabel">Detalles del Celular</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Aquí se mostrarán los detalles del celular -->
+          <div id="detalleCelularMarcaModelo" class="mb-3"></div>
+          <div id="detalleCelularPrecio" class="mb-3"></div>
+          <div id="detalleCaracteristica" class="mb-3"></div>
+          <!-- Agrega más información detallada del celular aquí, como características técnicas, etc. -->
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
@@ -342,12 +370,52 @@
 
     // Datos de ejemplo de celulares en venta
     const celulares = [
-      { marca: "Samsung", modelo: "Galaxy f54", precio: 400, imagen: "imagenes/samsung-galaxy-f54.jpg" },
-      { marca: "Sony", modelo: "Xperia 1v", precio: 1140, imagen: "imagenes/sony-xperia-1-v-0.jpg" },
-      { marca: "Xiaomi", modelo: "Redmi 12", precio: 144, imagen: "imagenes/xiaomi-redmi-12.jpg" },
-      { marca: "Sony", modelo: "Xperia 1", precio: 1000, imagen: "imagenes/sony-xperia-1.jpg" },
-      { marca: "Apple", modelo: "iphone 14 pro", precio: 1200, imagen: "imagenes/apple-iphone-14-pro.jpg" },
-      { marca: "Samsung", modelo: "Galaxy s22 ultra", precio: 800, imagen: "imagenes/samsung-galaxy-s22-ultr.jpg" },
+      { marca: "Samsung", modelo: "Galaxy f54", precio: 400, imagen: "imagenes/samsung-galaxy-f54.jpg",detalles:`NETWORK	Technology 
+      GSM / HSPA / LTE / 5G
+      LAUNCH	Announced	2023, June 06
+      Status	Available. Released 2023, June 13
+      BODY	Dimensions	164.9 x 77.3 x 8.4 mm (6.49 x 3.04 x 0.33 in)
+      Weight	199 g (7.02 oz)
+      Build	Glass front, plastic back, plastic frame
+      SIM	Hybrid Dual SIM (Nano-SIM, dual stand-by)
+      DISPLAY	Type	Super AMOLED Plus, 120Hz
+      Size	6.7 inches, 108.4 cm2 (~85.0% screen-to-body ratio)
+      Resolution	1080 x 2400 pixels, 20:9 ratio (~393 ppi density)
+      PLATFORM	OS	Android 13, One UI 5.1
+      Chipset	Exynos 1380 (5 nm)
+      CPU	Octa-core (4x2.4 GHz Cortex-A78 & 4x2.0 GHz Cortex-A55)
+      GPU	Mali-G68 MP5
+      MEMORY	Card slot	microSDXC (uses shared SIM slot)
+      Internal	256GB 8GB RAM
+      MAIN CAMERA	Triple	108 MP, f/1.8, (wide), PDAF, OIS
+      8 MP, f/2.2, (ultrawide), 1/4", 1.12µm
+      2 MP, f/2.4, (macro)
+      Features	LED flash, panorama, HDR
+      Video	4K@30fps, 1080p@30/60fps
+      SELFIE CAMERA	Single	32 MP, f/2.2, 26mm (wide), 1/2.8", 0.8µm
+      Video	4K@30fps, 1080p@30fps
+      SOUND	Loudspeaker	Yes
+      3.5mm jack	No
+      COMMS	WLAN	Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, Wi-Fi Direct
+      Bluetooth	5.3, A2DP, LE
+      Positioning	GPS, GLONASS, GALILEO, BDS, QZSS, NavIC
+      NFC	Yes
+      Radio	No
+      USB	USB Type-C 2.0, OTG
+      FEATURES	Sensors	Fingerprint (side-mounted), accelerometer, gyro, proximity, compass
+      BATTERY	Type	Li-Po 6000 mAh, non-removable
+      Charging	Unspecified charging speed
+      MISC	Colors	Meteor Blue, Stardust Silver
+      Models	SM-E546B, SM-E546B/DS
+      SAR	1.25 W/kg (head)    
+      Price	₹ 29,799`},
+      { marca: "Sony", modelo: "Xperia 1v", precio: 1140, imagen: "imagenes/sony-xperia-1-v-0.jpg",detalles:`` },
+      { marca: "Xiaomi", modelo: "Redmi 12", precio: 144, imagen: "imagenes/xiaomi-redmi-12.jpg",detalles:`` },
+      { marca: "Sony", modelo: "Xperia 1", precio: 1000, imagen: "imagenes/sony-xperia-1.jpg",detalles:`` },
+      { marca: "Apple", modelo: "iphone 14 pro", precio: 1200, imagen: "imagenes/apple-iphone-14-pro.jpg",detalles:`` },
+      { marca: "Samsung", modelo: "Galaxy s22 ultra", precio: 800, imagen: "imagenes/samsung-galaxy-s22-ultr.jpg",detalles:`` },
+      { marca: "Honor", modelo: "X50", precio: 900, imagen: "imagenes/honor-x50-1.jpg",detalles:`` },
+      { marca: "Google", modelo: "Pixel 7 pro", precio: 720, imagen: "imagenes/google-pixel7-pro-2.jpg",detalles:`` },
       // Agregar más datos de celulares aquí
     ];
 
@@ -366,12 +434,18 @@
               <h5 class="card-title">${celular.marca}</h5>
               <p class="card-text">Modelo: ${celular.modelo}</p>
               <p class="card-text">Precio: $${celular.precio}</p>
-              <button class="btn btn-primary agregar-carrito" data-marca="${celular.marca}" data-modelo="${celular.modelo}" data-precio="${celular.precio}">
-                Agregar al carrito
-              </button>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-primary agregar-carrito" data-marca="${celular.marca}" data-modelo="${celular.modelo}" data-precio="${celular.precio}">
+                  Agregar al carrito
+                </button>
+                <button class="btn btn-secondary detalles" data-toggle="modal" data-target="#detalleCelularModal" data-marca="${celular.marca}" data-modelo="${celular.modelo}" data-precio="${celular.precio}" data-detalles="${celular.detalles}">
+                  Detalles
+                </button>
+              </div>
             </div>
           </div>
         `;
+
         const agregarCarritoBtn = card.querySelector(".agregar-carrito");
         agregarCarritoBtn.addEventListener("click", () => {
           const marca = agregarCarritoBtn.getAttribute("data-marca");
@@ -511,6 +585,45 @@
       $('#inicioCarousel').carousel();
     });
     
+      // Event listener para los botones "Detalles"
+    const detallesBotones = document.querySelectorAll(".detalles");
+    detallesBotones.forEach((boton) => {
+    boton.addEventListener("click", () => {
+    const marca = boton.getAttribute("data-marca");
+    const modelo = boton.getAttribute("data-modelo");
+    const detalle= boton.getAttribute("data-detalles");
+    const precio = parseFloat(boton.getAttribute("data-precio"));
+
+    // Llena el contenido del modal con la información del celular
+    document.getElementById("detalleCelularMarcaModelo").textContent = `${marca} - ${modelo}`;
+    document.getElementById("detalleCelularPrecio").textContent = `Precio: $${precio.toFixed(2)}`;
+    document.getElementById("detalleCaracteristica").textContent = `${detalle}`;
+
+    // Puedes agregar más información detallada aquí según tus necesidades
+
+    // Abre el modal de detalles
+    $("#detalleCelularModal").modal("show");
+      });
+    });
+
+    // Event listener para el botón "Pagar"
+const pagarBtn = document.getElementById("pagarBtn");
+pagarBtn.addEventListener("click", function () {
+  if (carrito.length === 0) {
+    alert("Carrito vacío. Agregue productos al carrito antes de pagar.");
+  } else {
+    // Crear una cadena de consulta con los datos del carrito
+    const queryString = carrito.map((producto, index) => {
+      return `producto${index + 1}=${encodeURIComponent(
+        `${producto.marca} - ${producto.modelo}`
+      )}&precio${index + 1}=${encodeURIComponent(producto.precio)}`;
+    }).join("&");
+    
+    // Redirigir a la página de pago con los datos del carrito en la URL
+    window.location.href = `checkout.html?${queryString}`;
+  }
+});
+
     
   </script>
 </body>
