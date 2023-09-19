@@ -34,22 +34,47 @@
         color: #ffc107;
       }
 
-      /* Estilo personalizado para el contenedor del carrusel 
-    .carousel-container {
-        max-height: 300px; /* Ajusta la altura como desees 
-    }
-
-    /* Redimensiona las imágenes para que se ajusten a la nueva altura 
-    .carousel-inner img {
-        max-height: 100%;
-        width: auto;
-        margin: 0 auto; /* Centra horizontalmente las imágenes 
-    }*/
-    /* Estilo para las imágenes de los clientes */
 .cliente-imagen {
   width: 60px; /* Ajusta el ancho deseado */
   height: 60px; /* Ajusta la altura deseada */
   border-radius: 50%; /* Opcional: para redondear las imágenes */
+}
+    /* Estilos CSS personalizados para la sección de añadir comentarios */
+#comentarioForm {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#comentarioForm h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+#comentarioForm .form-control {
+  margin-bottom: 15px;
+}
+
+#comentarioForm textarea {
+  resize: none; /* Evita que se pueda redimensionar el cuadro de texto */
+}
+
+#comentarioForm button {
+  background-color: #007bff;
+  border: none;
+}
+
+#comentarioForm button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para centrar verticalmente el formulario en pantallas pequeñas */
+@media (max-width: 576px) {
+  #comentarioForm {
+    margin-top: 20px;
+    padding: 15px;
+  }
 }
 
 
@@ -111,7 +136,7 @@
   <section class="bg-light py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" id="comentariosContainer">
           <h2>Clientes Satisfechos</h2>
           <p>Aquí están algunas opiniones de nuestros clientes satisfechos.</p>
           
@@ -149,13 +174,26 @@
       </div>
     </div>
   </section>
-  
-  
-  
-  
-  
-  
-  
+
+  <!-- ... Código HTML existente ... -->
+
+  <div class="col-md-6 mx-auto text-center">
+    <h2 class="mb-4">Añadir un Comentario</h2>
+    <form id="comentarioForm">
+      <div class="form-group">
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre" required>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" id="comentario" name="comentario" rows="4" placeholder="Tu Comentario" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+    </form>
+  </div>
+<br>
+<br>
+
+<!-- ... Código HTML existente ... -->
+
 
   <footer class="bg-dark text-white py-4">
     <div class="container">
@@ -228,6 +266,41 @@
   },
   // Agrega más productos destacados según sea necesario
 ];
+
+// ... Código JavaScript existente ...
+
+// Manejar el envío del formulario de comentario
+const comentarioForm = document.getElementById("comentarioForm");
+const comentariosContainer = document.getElementById("comentariosContainer");
+
+comentarioForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  // Obtener valores del formulario
+  const nombre = document.getElementById("nombre").value;
+  const comentarioTexto = document.getElementById("comentario").value;
+
+  // Crear elemento de comentario
+  const comentarioElement = document.createElement("div");
+  comentarioElement.classList.add("media", "mb-4");
+  comentarioElement.innerHTML = `
+    <img src="imagenes/avatar.png" class="mr-3 cliente-imagen" alt="${nombre}">
+    <div class="media-body">
+      <h5 class="mt-0">${nombre}</h5>
+      <p>${comentarioTexto}</p>
+    </div>
+  `;
+
+  // Agregar el comentario al contenedor de comentarios
+  comentariosContainer.appendChild(comentarioElement);
+
+  // Limpiar el formulario
+  comentarioForm.reset();
+});
+
+// ... Resto del código JavaScript existente ...
+
+
 function mostrarProductosDestacados() {
   const productosDestacadosContainer = document.getElementById("productosDestacados");
 
